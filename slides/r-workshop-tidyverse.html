@@ -82,6 +82,7 @@ class: center, middle, inverse, title-slide
 1. Visualizing univariate distributions
 2. Visualizing relationships between two continuous variables with a scatterplot
 3. Visualizing relationships between a continuous and discrete variable
+4. Faceting visualizations to show conditional relationships
 
 ## Data manipulation with dplyr
 1. Filtering rows
@@ -99,6 +100,63 @@ Today's workshop will highlight a lot of concepts originated from [R for Data Sc
 .center[![](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)]
 
 .center[Tidy data analysis workflow proposed by Hadley et al.]
+
+---
+
+
+# .center[Let's flip over to RStudio Cloud.]
+
+---
+
+# ggplot2 basics
+
+## ggplots are built using a **data source**, mapping parameters (**aes**), **geoms**, and other helper functions
+
+
+
+```r
+# General ggplot2 syntax
+
+ggplot(data,
+       aes(...)) +
+  geom_type1(aes(...), ...) +
+  geom_type2(aes(...), ...) +
+  helper_1(...) + 
+  helper_2(...)
+```
+
+---
+
+# **aes** parameters
+
+## **aes** parameters are aesthetic parameters that pertain to how to construct and style the plot (e.g. data mappings, colours, sizes)
+
+- **x** - variable mapped to the x-axis
+- **y** - variable mapped to the y-axis
+- **colour, fill, shape, size, ... **  - specifications for geom layers
+
+---
+
+# **geoms**
+
+## **geoms** are geometric shapes that describe what type of plot you are creating (e.g. scatter plot, line plot, bar plot)
+
+- **geom_point()** - creates "points" (e.g. scatterplot)
+- **geom_line()** - line graphs
+- **geom_histogram()** - histograms
+- **geom_boxplot()** - boxplots
+- ... and [LOTS more](https://ggplot2.tidyverse.org/reference/index.html)
+
+---
+
+
+# Helper functions
+
+## Other helper functions provide additional customizability of your overall plot (e.g. faceting, themes)
+
+- **facet_wrap()** - creates panel plots conditioned by a discrete variable
+- **scale_...()** - helps rescale axes (many variations of scale functions, e.g. scale_x_continuous(), scale_y_continuous())
+- **theme()** - customizes visual aspects of the plot (fonts, themes)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
