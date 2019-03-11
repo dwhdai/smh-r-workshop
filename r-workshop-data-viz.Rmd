@@ -58,8 +58,10 @@ summary(iris)
 ```{r}
 # Univariate continuous distributions can be visualized in various ways, but one popular way is a histogram
 
+
 # Let's create a basic histogram of the sepal length variable from the iris dataset using ggplot2
-ggplot(data = iris,
+
+ggplot(data = iris, # Specify the name of the dataset
        aes(x = Sepal.Length)) + # Specify which variable to map to the x-axis
   geom_histogram() # Add a geom_histogram layer to create a histogram of sepal length
 
@@ -72,8 +74,36 @@ ggplot(data = iris,
 
 ```
 
-##
+## Visualizing relationships between two continuous variables
+
+Relationships between two continuous variables are commonly visualized using a scatterplot. 
+
 ```{r}
 
+# Create a basic scatterplot to show the relationship between sepal length and petal length
+
+ggplot(data = iris,
+       aes(x = Petal.Length, y = Sepal.Length)) +
+  geom_point() # geom_point creates points at each x-y mapping of the data, thereby creating a scatterplot
+
+
 ```
+
+## Visualizing relationships between a continuous variable and a discrete variable
+
+Relationships between continuous and discrete variables are trickier to visualize. One common way is to use boxplots.
+
+```{r}
+
+# Create a simple boxplot of sepal length by flower species 
+
+ggplot(data = iris,
+       aes(x = Species, # Note: for boxplots, you should put the discrete variable on the x-axis
+           y = Sepal.Length)) +
+  geom_boxplot()
+
+
+```
+
+## Faceting visualizations to show conditional relationships
 
