@@ -1,0 +1,122 @@
+---
+title: "SMH R Workshop - R basics"
+output: html_document
+---
+
+# R and RStudio Basics
+
+This is an RMarkdown document. RMarkdown can be used to create a variety of outputs (e.g. reports), but for now we will be using it as a way to document our data analysis. 
+
+You can type text surrounding code chunks, as you would in a word document.
+
+```{r}
+
+# This is a code chunk. Within code chunks, you can type R code to execute operations. To create a new code chunk, you can use the "Insert Chunk" button in the toolbar, or press "Ctrl/Cmd + Alt + I" on your keyboard.
+
+# When typing R code, you may also wish to insert comments to annotate your code (like this one!). You can do this simply by starting a line with the "#" sign
+
+# To execute code from a code chunk, either select the lines of code and press "Run" in the toolbar, or press "Ctrl/Cmd + Enter" on your keyboard
+
+
+
+# Try running the following lines of code
+1 + 1
+(1 + 3) / 2
+1 + 3 / 2
+
+# Now, try running the entire chunk by pressing "Run -> Run Current Chunk"
+
+```
+
+# R Programming Basics
+
+## R Objects
+
+```{r}
+
+# Everything in R is stored in R objects
+
+# All objects are created in some form of the following
+
+object_name <- value
+
+# E.g. Assign 'x' the value of 2
+x <- 2
+x
+
+# The '<-' is R's assignment operator. The direction of the arrow signifies what is the object name and 
+# what is the value being assigned to the object.
+
+# Note: Functionally, the '=' operator is the same as '<-'. However, it is highly recommended that you use the '<-' operator 
+#       to avoid confusion later down the road as you write more complex code.
+
+# Don't do this!
+y = 3
+
+# Instead, do this
+y <- 3
+
+```
+
+R object names can only contain letters, numbers, underscores, and periods. They must start with a letter. Using descriptive object names are highly recommended. There are several coding conventions for object names with multiple words.
+
+```{r}
+
+# Snake case - the preferred one for most people
+
+snake_case_is_great
+
+# Camel case - another commonly used one
+
+camelCaseIsOkay
+
+# Periods
+
+using.periods.is.not.as.good
+
+# Please don't do this
+
+what_do.iEven_call.this
+
+```
+
+## Using functions
+
+R has a lot of built-in functions, and there are many more functions that can be loaded additionally through external packages. Functions allow users to do more operations.
+
+```{r}
+
+# R functions are called like this:
+
+function_name(arg1, arg2, ...)
+
+# A function call takes in arguments (some required, some optional) and does computations based on the inputted parameters
+
+# E.g. the sum() function allows users to calculate a sum
+x <- 2
+y <- 5
+sum(x, y)
+
+```
+
+## Basic troubleshooting examples
+
+Now that you're familiar with some R basics, see if you can complete the missing code!
+
+```{r}
+
+# Assign 29 to an object named x1
+x1 <- 
+  
+# Create another object named x2, and assign it the value of 34
+
+
+# Using the sum() function, calculate the sum of x1 and x2, and save this to an object named total
+
+
+# Check that the value of total is 63
+print(total)  
+
+```
+
+

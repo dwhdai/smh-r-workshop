@@ -1,0 +1,51 @@
+---
+title: "SMH R Workshop - Data Visualization"
+output: html_document
+---
+
+So far, you've been using functions included in base R, but there are many more R packages that contain additional useful functions for various tasks. One such package is ggplot2, which is a very popular data visualization package.
+
+
+# Packages
+
+## Installing packages
+
+```{r}
+# To install R packages (works for most packages)
+
+install.packages("package_name") # Note that the package_name is wrapped in double quotes. This is important.
+
+# Try installing the ggplot2 package
+
+install.packages("ggplot2")
+```
+
+You only need to install packages once on any given computer.
+
+## Loading packages
+
+Once you've installed a package, in order to access the package's functions, you would need to load the package. In contrast to installation, this needs to be done every time you open and re-open R.
+
+```{r}
+# To load an R package, use the library() function
+
+# Try loading the ggplot2 package
+
+library(ggplot2)
+
+# Once you've loaded the package, you can access the package contents
+
+```
+
+# help() function
+
+Brief sidenote: R has a built-in help function that allows you to pull up the helpfile for any function you have access to (including base R functions, as well as any functions from externally loaded packages). Helpfiles are very useful as you troubleshoot your code.
+
+```{r}
+# To access the helpfile for the sum() function, you can use
+help(sum)
+
+# OR, simply use
+?(sum)
+```
+
