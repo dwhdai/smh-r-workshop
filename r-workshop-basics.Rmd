@@ -134,3 +134,4 @@ print(total)
 ```
 
 
+# Next section: ggplot2 slides
