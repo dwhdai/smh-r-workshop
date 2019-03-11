@@ -18,6 +18,7 @@ You can type text surrounding code chunks, as you would in a word document.
 
 # Try running the following lines of code
 1 + 1
+
 ```
 
 
