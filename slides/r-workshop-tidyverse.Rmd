@@ -91,5 +91,5 @@ Today's workshop will highlight a lot of concepts originated from [R for Data Sc
 
 .center[Tidy data analysis workflow proposed by Hadley et al.]
 
-#
+
 
