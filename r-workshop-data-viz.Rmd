@@ -107,3 +107,16 @@ ggplot(data = iris,
 
 ## Faceting visualizations to show conditional relationships
 
+Sometimes, it's helpful to see conditional relationships between variables. This can be done by using facet helper functions in ggplot2 to create "paneled" plots.
+
+```{r}
+
+# Using faceting, visualize the relationship between sepal length and petal length, conditioned by flower species
+
+ggplot(data = iris,
+       aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point() +
+  facet_wrap(c("Species"))
+
+```
+
