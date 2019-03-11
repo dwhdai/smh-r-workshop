@@ -37,3 +37,21 @@ library(ggplot2)
 
 ```
 
+
+# The iris dataset
+
+For the following data visualization exercises, we will use the built-in "iris" dataset. 
+
+```{r}
+# Load the data
+data(iris)
+
+# Brief summary of the data
+summary(iris)
+
+```
+
+# The ggplot2 package
+
+The ggplot2 package is a data visualization package within the tidyverse. "gg" stands for "grammar of graphics", which is what ggplot2 is built upon.
+
