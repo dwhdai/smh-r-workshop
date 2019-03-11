@@ -37,15 +37,3 @@ library(ggplot2)
 
 ```
 
-# help() function
-
-Brief sidenote: R has a built-in help function that allows you to pull up the helpfile for any function you have access to (including base R functions, as well as any functions from externally loaded packages). Helpfiles are very useful as you troubleshoot your code.
-
-```{r}
-# To access the helpfile for the sum() function, you can use
-help(sum)
-
-# OR, simply use
-?(sum)
-```
-
