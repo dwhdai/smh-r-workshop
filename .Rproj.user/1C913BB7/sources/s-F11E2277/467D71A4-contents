@@ -1,0 +1,99 @@
+---
+title: "Machine Learning Debt"
+subtitle: "Journal Club"
+author: "David Dai"
+date: "2019/03/07"
+output:
+  xaringan::moon_reader:
+    # css: [default, default-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      titleSlideClass: ["bottom", "left", "my-title"]
+      countIncrementalSlides: false
+
+---
+
+
+
+# .center["Real world software engineers are often faced with the challenge of moving quickly to ship new products or services, which can lead to a dilemma between *speed of execution* and *quality of engineering*."]
+
+---
+
+# Technical Debt
+
+## Defined as the "cost" of the "speed vs. quality" tradeoff
+
+- "Convenient" methods allow for rapid development, but may not be the most robust
+
+- Quality engineering practices require heavy up-front investments, but may save time/effort in the future
+
+---
+
+# Technical debt in machine learning (or more generally, production modelling) systems
+
+## Code complexities
+* Models built on code face similar code complexity issues as software code
+
+* E.g. a library used for data modeling changes one of its functions, leading to different calculations
+
+### These issues can be addressed by traditional methods like code refactoring, reducing dependencies, and unit testing.
+
+---
+
+# Technical debt in machine learning (or more generally, production modelling) systems
+
+## System-level implications
+
+* These slightly different calculations can cause downstream, compounding effects
+
+* E.g. The team detects change in model performance and decides that the problem is impossible to fix, and stops using this model. Unbeknownst to them, another team's project depends on the output of this model as input to their own model.
+
+### These issues may not be as obvious to detect.
+
+---
+
+# Types of system-level debt
+
+### 1) Entanglement - "Changing anything changes everything"
+* E.g. If you have features $x_1,...,x_n$ in a model, and the distribution of $x_1$ changes, or you want to add an additional feature $x_{n+1}$, this could cause the other features as well as the overall model to behave differently.
+
+### 2) Hidden feedback loops 
+* E.g. A model that predicts news headlines click through rate uses a feature called $x_{week}$ that counts the number of headlines a user clicked on in the past week.
+* If this model improves CTR, users will begin to click on more headlines, thereby changing the input distribution.
+* Over time, if the model is updated, the influence of $x_{week}$ on CTR may change, but the change could be slow and hard to detect.
+
+---
+
+# Types of system-level debt
+
+### 3) Undeclared customers
+
+* E.g. If another model uses predicted CTR as an input to determine the font size for the headline (bigger font size for headlines the user is more likely to click), then the font sizes may continually increase as CTR increases
+
+* Also a hidden feedback loop
+
+### 4) Data dependencies
+
+* Unstable data sources can lead to unexpected, and sometimes difficult to identify issues
+
+* E.g. An important model input is derived from a separate model that updates over time
+
+* E.g. An input feature for your model is derived by a separate team, and the methodology used for derivation is changed via improvement updates and has unintended consequences for your own model
+---
+
+# Types of system-level debt
+
+### 5) Pipeline jungles
+* E.g. A data pipeline can consist of lots of "glue code" used for data scraping, data preprocessing, and merging. 
+
+* Addition of new information sources can lead to messy code that resembles "a jungle of scrapes, joins, sampling steps, and intermediate files".
+
+### 6) External world changes
+* E.g. If two features are correlated, but only one is causal of the outcome, it is difficult to tease apart the contributions of each feature on the outcome. Weight is assigned to both and the model depends on the correlation within the training data.
+
+* If there is a shift in the data, and these features are no longer correlated, the model performance can change significantly
+
+--- 
+
+# Methods to mitigate system-level debt
