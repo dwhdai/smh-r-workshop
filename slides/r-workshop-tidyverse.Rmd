@@ -79,7 +79,11 @@ output:
 3. Visualizing relationships between a continuous and discrete variable
 
 ## Data manipulation with dplyr
-
+1. Filtering rows
+2. Selecting columns
+3. Creating new variables
+4. Summarising variables
+5. Grouped operations
 
 ---
 
