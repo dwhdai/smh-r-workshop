@@ -71,8 +71,6 @@ output:
 
 # Tasks
 
-## Getting familiar with RStudio
-
 ## Data visualization with ggplot2
 1. Visualizing univariate distributions
 2. Visualizing relationships between two continuous variables with a scatterplot
