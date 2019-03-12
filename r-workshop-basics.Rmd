@@ -24,8 +24,6 @@ You can type text surrounding code chunks, as you would in a word document.
 (1 + 3) / 2
 1 + 3 / 2
 
-# Now, try running the entire chunk by pressing "Run -> Run Current Chunk"
-
 ```
 
 # R Programming Basics

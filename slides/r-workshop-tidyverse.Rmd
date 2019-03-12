@@ -23,14 +23,14 @@ output:
 
 ---
 
-# Goals of today
+<!-- # Goals of today -->
 
-## 1) Learn the basics of modern R programming
-## 2) Create simple data visualizations using ggplot2
-## 3) Learn the basics of data manipulation using dplyr
+<!-- ## 1) Learn the basics of modern R programming -->
+<!-- ## 2) Create simple data visualizations using ggplot2 -->
+<!-- ## 3) Learn the basics of data manipulation using dplyr -->
 
-### I will assume that you have some knowledge/experience of programming.
----
+<!-- ### I will assume that you have some knowledge/experience of programming. -->
+<!-- --- -->
 
 # During the workshops...
 
