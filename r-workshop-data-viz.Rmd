@@ -68,7 +68,9 @@ ggplot(data = iris, # Specify the name of the dataset
 
 # Try adapting the previous code to create a histogram of the sepal width
 
-
+ggplot(data = iris,
+       aes(x = Sepal.Width)) +
+  geom_histogram()
 
 
 
@@ -88,6 +90,7 @@ ggplot(data = iris,
   geom_point() # geom_point creates points at each x-y mapping of the data, thereby creating a scatterplot
 
 
+
 ```
 
 ## Visualizing relationships between a continuous variable and a discrete variable
@@ -98,7 +101,16 @@ Relationships between continuous and discrete variables are trickier to visualiz
 
 # Create a simple boxplot of sepal length by flower species 
 
-ggplot(data = iris,
+ggplot(data = iris %>% 
+         filter(Species %in% c("setosa", "versicolor")),
+       aes(x = Species, # Note: for boxplots, you should put the discrete variable on the x-axis
+           y = Sepal.Length)) +
+  geom_boxplot()
+
+tdisubset <- iris %>%
+  filter(Species %in% c("setosa", "versicolor"))
+
+ggplot( data= subset,
        aes(x = Species, # Note: for boxplots, you should put the discrete variable on the x-axis
            y = Sepal.Length)) +
   geom_boxplot()
@@ -117,7 +129,8 @@ Sometimes, it's helpful to see conditional relationships between variables. This
 ggplot(data = iris,
        aes(x = Sepal.Length, y = Petal.Length)) +
   geom_point() +
-  facet_wrap(c("Species"))
+  # facet_wrap(c("Species"))
+  facet_wrap(~Species)
 
 ```
 
@@ -135,7 +148,8 @@ ggplot(data = iris,
 ggplot(data = iris,
        aes(x = Petal.Length,
            y = Petal.Width)) +
-  geom_point(aes(size = Sepal.Length)) +
+  geom_point(aes(size = Sepal.Length,
+           col = Species)) +
   ggtitle("Relationship between petal length and petal width in irises") +
   xlab("Petal Length (cm)") +
   ylab("Petal Width (cm)")

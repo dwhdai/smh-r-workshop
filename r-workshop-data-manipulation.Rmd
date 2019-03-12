@@ -45,7 +45,7 @@ summary(wine_data)
 
 # The filter() and select() columns serve two of the most basic data processing steps: filtering down your rows, and selecting the right columns
 
-# Let's create a dataset that contains only acidic wines by filtering wines that have a fixed.acidity of less than 7
+# Let's create a dataset that contains only non-acidic wines by filtering wines that have a fixed.acidity of less than 7
 
 acidic_wines <- filter(wine_data, fixed.acidity < 7)
 
@@ -56,6 +56,7 @@ summary(acidic_wines) # Notice the range of the fixed.acidity value
 acidic_wines_subset <- select(acidic_wines, density, pH, sulphates)
 
 summary(acidic_wines_subset)
+summary(wine_data)
 
 ```
 
@@ -78,14 +79,32 @@ summary(new_data)
 
 ```{r}
 
-# Create a new variable named acidity_level that is the "low" if fixed.acidity is less than 10, and "high" otherwise
+# Create a new variable named acidity_level that is "low" if fixed.acidity is less than 10, and "high" otherwise
 # We can use the builtin ifelse() function for conditional assignments
 
-wine_data <- wine_data %>%
-  mutate(acidity_level = ifelse(fixed.acidity < 10, "low", "high"))
+new_wine_data <- wine_data %>%
+  mutate(acidity_level1 = ifelse(fixed.acidity < 1, "low", "high"),
+         acidity_level2 = ifelse(fixed.acidity < 2, "low", "high")) %>%
+  mutate(acidity_level10 = ifelse(fixed.acidity < 10, "low", "high"))%>%
+  filter() %>%
+  mutate(acidity_level10 = ifelse(fixed.acidity < 10, "low", "high"))%>%
+  mutate(acidity_level10 = ifelse(fixed.acidity < 10, "low", "high"))%>%
+  mutate(acidity_level10 = ifelse(fixed.acidity < 10, "low", "high"))%>%
+  mutate(acidity_level_multiple = ifelse(fixed.acidity < 5, "low",
+                                         ifelse(fixed.acidity < 10,
+                                                "medium","high"))) %>%
+  mutate(acidity_level = case_when(
+    fixed.acidity < 5 ~ "low",
+    fixed.acidity < 10 ~ "medium",
+    TRUE ~ "high"
+  ))
+
+
+
 
 head(wine_data)
-
+summary(wine_data)
+View(wine_data)
 ```
 
 # Creating data summaries
@@ -116,7 +135,8 @@ wine_data %>%
   summarise(mean_pH = mean(pH),
             sd_pH = sd(pH),
             min_pH = min(pH),
-            max_pH = max(pH))
+            max_pH = max(pH)) %>%
+  ungroup()
 
 ```
 

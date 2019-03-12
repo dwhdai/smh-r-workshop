@@ -106,7 +106,7 @@ Brief sidenote: R has a built-in help function that allows you to pull up the he
 help(sum)
 
 # OR, simply use
-?(sum)
+?sum
 ```
 
 
@@ -118,14 +118,14 @@ Now that you're familiar with some R basics, see if you can complete the missing
 ```{r}
 
 # Assign 29 to an object named x1
-x1 <- 
-  
+x1 <- 29
+x1
 # Create another object named x2, and assign it the value of 34
-
+x2 <- 34
 
 # Using the sum() function, calculate the sum of x1 and x2, and save this to an object named total
-
-
+total <- sum(x1, x2)
+total 
 # Check that the value of total is 63
 print(total)  
 
