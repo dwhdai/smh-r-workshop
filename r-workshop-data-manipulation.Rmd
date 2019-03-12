@@ -30,8 +30,11 @@ In this project folder, I've included a dataset named winequality-red.csv. Let's
 
 ```{r}
 
+# Using read_csv() from readr to import the dataset
 wine_data <- read_csv("winequality-red.csv")
 
+# Use the summary() function to get a quick summary of the dataset
+summary(wine_data)
 
 ```
 
@@ -39,10 +42,81 @@ wine_data <- read_csv("winequality-red.csv")
 # Filtering rows and selecting columns
 
 ```{r}
+
 # The filter() and select() columns serve two of the most basic data processing steps: filtering down your rows, and selecting the right columns
 
+# Let's create a dataset that contains only acidic wines by filtering wines that have a fixed.acidity of less than 7
+
+acidic_wines <- filter(wine_data, fixed.acidity < 7)
+
+summary(acidic_wines) # Notice the range of the fixed.acidity value
+
+# Let's now focus on the density, pH, and sulphates level. Create a data subset that contains only these three columns
+
+acidic_wines_subset <- select(acidic_wines, density, pH, sulphates)
+
+summary(acidic_wines_subset)
+
+```
+
+# The pipe operator
+
+One of the great things about working in the tidyverse is the ability to "pipe" operations together using the pipe operator ("%>%"). Piping allows you to combine related operations and weave them together to tell a complete story.
+
+```{r}
+# From the original wines_data dataset, create a new dataset named new_data that contains only acidic wines (fixed.acidity < 7) and the columns density, pH, and sulphates
+
+new_data <- wine_data %>%
+  filter(fixed.acidity < 7) %>%
+  select(density, pH, sulphates)
+
+summary(new_data)
+
+```
+
+# Creating new variables using mutate()
+
+```{r}
+
+# Create a new variable named acidity_level that is the "low" if fixed.acidity is less than 10, and "high" otherwise
+# We can use the builtin ifelse() function for conditional assignments
+
+wine_data <- wine_data %>%
+  mutate(acidity_level = ifelse(fixed.acidity < 10, "low", "high"))
+
+head(wine_data)
+
+```
+
+# Creating data summaries
+
+The summarise() function is a versatile function that allows you to do a lot of different things. Generally, you use this function when you want to summarise/aggregate your date
+
+```{r}
+# Using summarise(), calculate the mean, median, minimum, and maximum of the pH of all wines in the wine_data dataset
+
+wine_data %>%
+  summarise(mean_pH = mean(pH),
+            median_pH = median(pH),
+            min_pH = min(pH),
+            max_pH = max(pH))
 
 
 ```
 
+# Grouping operations using group_by()
+
+Sometimes, grouped operations can be useful when you want to perform different calculations on subgroups of your data. The group_by() function from dplyr allows you to group sets of operations together. 
+
+```{r}
+# Using the wine_data dataset and the acidity_level variable we created, calculate the mean, SD, minimum, and maximum pH levels of all wines, grouped by the acidity_level variable
+
+wine_data %>%
+  group_by(acidity_level) %>% 
+  summarise(mean_pH = mean(pH),
+            sd_pH = sd(pH),
+            min_pH = min(pH),
+            max_pH = max(pH))
+
+```
 
