@@ -8,7 +8,7 @@ So far, you've been using functions included in base R, but there are many more 
 
 # Packages
 
-## Installing packages
+## Installing ggplot2 package
 
 ```{r}
 # To install R packages (works for most packages)
@@ -22,9 +22,9 @@ install.packages("ggplot2")
 
 You only need to install packages once on any given computer.
 
-## Loading packages
+## Loading ggplot2
 
-Once you've installed a package, in order to access the package's functions, you would need to load the package. In contrast to installation, this needs to be done every time you open and re-open R.
+Once you've installed the ggplot2 package, in order to access the package's functions, you would need to load the package. In contrast to installation, this needs to be done every time you open and re-open R.
 
 ```{r}
 # To load an R package, use the library() function
@@ -33,7 +33,7 @@ Once you've installed a package, in order to access the package's functions, you
 
 library(ggplot2)
 
-# Once you've loaded the package, you can access the package contents
+# Once you've loaded the package, you can now access the package contents
 
 ```
 
@@ -51,7 +51,97 @@ summary(iris)
 
 ```
 
-# The ggplot2 package
+# Data visualization with ggplot2
 
-The ggplot2 package is a data visualization package within the tidyverse. "gg" stands for "grammar of graphics", which is what ggplot2 is built upon.
+## Visualizing univariate distributions
+
+```{r}
+# Univariate continuous distributions can be visualized in various ways, but one popular way is a histogram
+
+
+# Let's create a basic histogram of the sepal length variable from the iris dataset using ggplot2
+
+ggplot(data = iris, # Specify the name of the dataset
+       aes(x = Sepal.Length)) + # Specify which variable to map to the x-axis
+  geom_histogram() # Add a geom_histogram layer to create a histogram of sepal length
+
+
+# Try adapting the previous code to create a histogram of the sepal width
+
+
+
+
+
+```
+
+## Visualizing relationships between two continuous variables
+
+Relationships between two continuous variables are commonly visualized using a scatterplot. 
+
+```{r}
+
+# Create a basic scatterplot to show the relationship between sepal length and petal length
+
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Sepal.Length)) + # Notice that there are mappings for x and y 
+  geom_point() # geom_point creates points at each x-y mapping of the data, thereby creating a scatterplot
+
+
+```
+
+## Visualizing relationships between a continuous variable and a discrete variable
+
+Relationships between continuous and discrete variables are trickier to visualize. One common way is to use boxplots.
+
+```{r}
+
+# Create a simple boxplot of sepal length by flower species 
+
+ggplot(data = iris,
+       aes(x = Species, # Note: for boxplots, you should put the discrete variable on the x-axis
+           y = Sepal.Length)) +
+  geom_boxplot()
+
+
+```
+
+## Faceting visualizations to show conditional relationships
+
+Sometimes, it's helpful to see conditional relationships between variables. This can be done by using facet helper functions in ggplot2 to create "paneled" plots.
+
+```{r}
+
+# Using faceting, visualize the relationship between sepal length and petal length, conditioned by flower species
+
+ggplot(data = iris,
+       aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point() +
+  facet_wrap(c("Species"))
+
+```
+
+## Plot titles and axis labels
+
+```{r}
+
+# Plot titles and axis labels can be easily added using ggtitle(), xlab(), and ylab() functions
+
+# Create a scatterplot of petal length on the x axis and petal width on the y axis
+# Using the "size" aesthetic parameter, scale point sizes by sepal length
+# Give this plot a title of "Relationship between petal length and petal width in irises"
+# Label the x axis as "Petal Length (cm)", and y axis as "Petal Width (cm)"
+
+ggplot(data = iris,
+       aes(x = Petal.Length,
+           y = Petal.Width)) +
+  geom_point(aes(size = Sepal.Length)) +
+  ggtitle("Relationship between petal length and petal width in irises") +
+  xlab("Petal Length (cm)") +
+  ylab("Petal Width (cm)")
+
+
+
+
+```
 
