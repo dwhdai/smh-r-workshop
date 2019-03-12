@@ -90,7 +90,7 @@ head(wine_data)
 
 # Creating data summaries
 
-The summarise() function is a versatile function that allows you to do a lot of different things. Generally, you use this function when you want to summarise/aggregate your date
+The summarise() function is a versatile function that allows you to do a lot of different things. Generally, you use this function when you want to summarise/aggregate your data
 
 ```{r}
 # Using summarise(), calculate the mean, median, minimum, and maximum of the pH of all wines in the wine_data dataset

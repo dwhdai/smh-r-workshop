@@ -15,8 +15,8 @@ output:
 # Welcome to the SMH R Workshop Series!
 
 ### Workshop 1- Data visualization and data manipulation in the R Tidyverse 
-* Workshop RStudio Cloud Project [here](https://rstudio.cloud/project/256912)
-* Workshop GitHub [here](https://github.com/dwhdai/smh-r-workshop)
+* Workshop RStudio Cloud Project: [https://rstudio.cloud/project/256912](https://rstudio.cloud/project/256912)
+* Workshop GitHub [https://github.com/dwhdai/smh-r-workshop](https://github.com/dwhdai/smh-r-workshop)
 
 ### Workshop 2- R in the life of a researcher (March 26, 11:00AM, Eyesha Hashim)
 
